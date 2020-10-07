@@ -1,8 +1,7 @@
 resource "aws_instance" "practico-wireless-course-ec2" {
   ami           = "ami-0817d428a6fb68645"
   instance_type = "t2.micro"
-  key_name      = "practico-wireless-course-ec2-key"
-  vpc_security_group_ids = [aws_security_group.practico-wireless-course-sg.id]
+  key_name      = "key_instancia-wireless-course"
   subnet_id = aws_subnet.practico-wireless-course-priv-sn.id
   tags = {
     Name = "practico-wireless-course"
@@ -10,7 +9,7 @@ resource "aws_instance" "practico-wireless-course-ec2" {
   connection {
       type = "ssh"
       user = "ubuntu"
-      private_key = file("./practico-wireless-course-ec2-key")
+      private_key = file("/home/christian/terraform_ejercicio_wireless_course/key_instancia-wireless-course.pem")
       host = self.public_ip
       }
       provisioner "remote-exec" {

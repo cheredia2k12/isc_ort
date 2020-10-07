@@ -17,3 +17,4 @@ variable "subnet" {
 output "dns-publico" {
   value = aws_instance.practico-wireless-course-ec2.public_dns
 }
+
